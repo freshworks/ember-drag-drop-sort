@@ -248,15 +248,17 @@ export default class SortableItemComponent extends Component {
   }
 
   _onDrop() {
-    this.args.dragend ? this.args.dragend() : '';
+    if (this.sortableContainer) {
+      this.args.dragend ? this.args.dragend() : '';
 
-    this.documentWindow.classList.remove('sortable-attached');
-    this.documentWindow.removeChild(this.sortableContainer.cloneNode);
-    this.element.removeAttribute('style');
-    this.sortableContainer.stopDrag();
+      this.documentWindow.classList.remove('sortable-attached');
+      this.documentWindow.removeChild(this.sortableContainer.cloneNode);
+      this.element.removeAttribute('style');
+      this.sortableContainer.stopDrag();
 
-    if(this.currentSortPane) {
-      this.currentSortPane.onDrop ? this.currentSortPane.onDrop(this.element) : '';
+      if(this.currentSortPane) {
+        this.currentSortPane.onDrop ? this.currentSortPane.onDrop(this.element) : '';
+      }
     }
   }
 
