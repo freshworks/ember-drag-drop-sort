@@ -5,7 +5,7 @@ export default class SortManagerService extends Service {
   currentDropPosition = null
   sourceIndex = null
   targetIndex = null
-  placeholderStyles = null
+  placeholderStyles = {}
   currentOverItem = null
   isDragging = false
   draggedItem = null
@@ -46,7 +46,7 @@ export default class SortManagerService extends Service {
       currentDropPosition: null,
       sourceIndex: null,
       targetIndex: null,
-      placeholderStyles: null,
+      placeholderStyles: {},
       currentOverItem: null,
       isDragging: false,
       draggedItem: null,
