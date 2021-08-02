@@ -45,7 +45,7 @@ export default class SortableItemComponent extends Component {
 
 	@computed
   get documentWindow() {
-    return document.querySelector('body');
+    return document.querySelector(this.args.appendTo || 'body');
   }
 
 	@computed('args.containment')
