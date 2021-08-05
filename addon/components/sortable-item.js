@@ -101,7 +101,9 @@ export default class SortableItemComponent extends Component {
   }
 
   _onMouseDown(ev) {
-    if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled) {
+
+    let targetEleClasses = [...ev.target.classList];
+    if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled || targetEleClasses.some(r=> this.args.preventDragClasses.includes(r))) {
       this._preventDefaultBehavior(ev);
       return;
     }
@@ -255,6 +257,11 @@ export default class SortableItemComponent extends Component {
       this.documentWindow.removeChild(this.sortableContainer.cloneNode);
       this.element.removeAttribute('style');
       this.sortableContainer.stopDrag();
+
+      setProperties(this, {
+        'sortManager.sortableContainer': null,
+        'sortManager.currentOverIndex': null
+      });
 
       if(this.currentSortPane) {
         this.currentSortPane.onDrop ? this.currentSortPane.onDrop(this.element) : '';
