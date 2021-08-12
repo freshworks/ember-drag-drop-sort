@@ -103,7 +103,7 @@ export default class SortableCardComponent extends Component {
   _onMouseDown(ev) {
 
     let targetEleClasses = [...ev.target.classList];
-    if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled || targetEleClasses.some(r=> this.args.preventDragClasses.includes(r))) {
+    if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled || targetEleClasses.some(r=> this.args.preventDragClasses?.includes(r))) {
       this._preventDefaultBehavior(ev);
       return;
     }
