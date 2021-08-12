@@ -1,1 +1,1 @@
-export { default } from 'ember-drag-drop-sort/components/sortable-item';
+export { default } from 'ember-drag-drop-sort/components/sortable-card';

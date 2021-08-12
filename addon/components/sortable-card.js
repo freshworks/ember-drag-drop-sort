@@ -15,7 +15,7 @@ const CONTEXTMENUKEYCODE = 2;
 const PLACEHOLDER_BG_COLOR = '#ccc';
 const SCROLL_ANIMATION_ID = '_dndContainmentScroll';
 
-export default class SortableItemComponent extends Component {
+export default class SortableCardComponent extends Component {
 
   sortable = true
 	
