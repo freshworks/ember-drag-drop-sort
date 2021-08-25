@@ -17,26 +17,26 @@ const SCROLL_ANIMATION_ID = '_dndContainmentScroll';
 
 export default class SortableCardComponent extends Component {
 
-  sortable = true
-	
-	@service sortManager;
+  sortable = true;
 
-	@reads('sortManager.activeSortPane')
-	currentSortPane
-	
-	@reads('sortManager.activeSortPaneElement')
-	activeSortPaneElement
-	
-	@reads('sortManager.sourceIndex')
-	sourceIndex
-	
-	@reads('sortManager.targetIndex')
-  targetIndex
-	
-	@reads('sortManager.sortableContainer')
-	sortableContainer
+  @service sortManager;
 
-	@computed('sortManager.currentOverItem')
+  @reads('sortManager.activeSortPane')
+  currentSortPane;
+
+  @reads('sortManager.activeSortPaneElement')
+  activeSortPaneElement;
+
+  @reads('sortManager.sourceIndex')
+  sourceIndex;
+
+  @reads('sortManager.targetIndex')
+  targetIndex;
+
+  @reads('sortManager.sortableContainer')
+  sortableContainer;
+
+  @computed('sortManager.currentOverItem')
   get isDragingOver() {
     let currentOverItem = get(this, 'sortManager.currentOverItem');
 
@@ -48,7 +48,7 @@ export default class SortableCardComponent extends Component {
     return document.querySelector(this.args.appendTo || 'body');
   }
 
-	@computed('args.containment')
+  @computed('args.containment')
   get containmentContainer() {
     if (this.args.containment) {
       let containmentElement = this.element.closest(`${this.args.containment}`);
@@ -62,7 +62,7 @@ export default class SortableCardComponent extends Component {
     return null;
   }
 
-	constructor() {
+  constructor() {
     super(...arguments);
 
     assert('tagName should not be empty', isEmpty(this.tagName));
@@ -86,7 +86,7 @@ export default class SortableCardComponent extends Component {
     element.addEventListener('dragOver', this._onDragover);
   }
 
-	@action
+  @action
   unregisterListener(element) {
     element.removeEventListener('mousedown', this._onMouseDown);
     element.removeEventListener('dragOver', this._onDragover);
@@ -124,7 +124,7 @@ export default class SortableCardComponent extends Component {
     // this._preventDefaultBehavior(ev);
     this._detachDragEventManager();
 
-		// this._cloneDraggable();
+    // this._cloneDraggable();
 
     this.args.dragstart && this.args.dragstart(ev);
 
@@ -324,5 +324,4 @@ export default class SortableCardComponent extends Component {
 
     return new CustomEvent(eventType, mergedOptions);
   }
-
 }

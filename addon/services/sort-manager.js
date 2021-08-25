@@ -14,9 +14,9 @@ export default class SortManagerService extends Service {
   activeSortPane = null
   sourceGroup = null
   isDragEntered = null
-	sortableContainer = null
+  sortableContainer = null
 	
-	@computed('activeSortPane')
+  @computed('activeSortPane')
   get activeSortPaneElement() {
     return get(this, 'activeSortPane.element');
   }
@@ -25,20 +25,20 @@ export default class SortManagerService extends Service {
   // While drag and drop mutation will happen implicitly
   // to render the list accordingly and collection should also
   // get update whenever the passed original collection get updated
-	@computed
-	get sourceList() {
+  @computed
+  get sourceList() {
       return A();
-	}
-	set sourceList(val) {
-		return val;
-	}
+  }
+  set sourceList(val) {
+    return val;
+  }
 
-	@computed
+  @computed
   get targetList() {
-		return A();
-	}
+    return A();
+  }
   set targetList(val) {
-		return val;
+    return val;
   }
 
   reset() {

@@ -8,7 +8,7 @@ export default class ApplicationController extends Controller {
   test() {
     let deferred = defer();
 
-    // setTimeout(() => {
+    // setTimeout(() => { //Code to revert the drop incase of failures
     //   deferred.reject(true);
     // }, 3000);
 

@@ -50,9 +50,13 @@ get model()  {
 ```
 
 Improvements done to support freshservice
- octane upgrade (is available as separate PR as well.) - https://github.com/Robin-Thomas-577/ember-sortable/tree/v1-ember-octane-upgrade
-<!-- * Horizontal sorting - This is commented for now-->
+1. Converted the addon to Octane.
+2. Introduced "appendTo" to append the dragged card to the passed element instead of the body to afford some CSS styling.
+3. Introduced "preventDragClasses"(array of classes) so on clicking any of these elements within a card, the drag will not be initiated. This is done to accommodate quick actions within the card.
+4. Renamed sortable-item component to sortable-card, since ember-sortable has the same name for one of its components and conflicts with our addon.
+5.  Added "addon-test-support/drag.js" to support writing test cases in the host application for drag & drop. => inspired from https://github.com/adopted-ember-addons/ember-sortable/blob/master/addon-test-support/helpers/drag.js
+6. We introduced horizontal sort of swimlanes as well. but it had heavy efforts to get rid of the mouse event conflicts with a card sort. So the dev done for this is commented for now in the PR. Might visit in future.
 
 Bugs and performance fixes done
 1) Dragging a card from the bottom seems to set the placeholder in the wrong position.
-2) as soon as mouse down happens cloning of the element is done. Moving this to only on start dragging happens, since we have quick actions on the card.
+2) as soon as the mouse down happens cloning of the element is done. Moving this to only on start dragging happens, since we have quick actions on the card.
