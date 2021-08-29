@@ -172,9 +172,9 @@ export default class SortableCardComponent extends Component {
       'width': `${sortableContainer.offsetWidth}px`,
       'height': `${sortableContainer.offsetHeight}px`,
       'background-color': PLACEHOLDER_BG_COLOR,
-      'border-radius': sortableContainer.computedDOMStyles.borderRadius,
-      'border-width': sortableContainer.computedDOMStyles.borderWidth,
-      'margin': sortableContainer.computedDOMStyles.margin
+      'border-radius': sortableContainer.computedDOMStyles.borderRadius || sortableContainer.computedDOMStyles.borderTopLeftRadius,
+      'border-width': sortableContainer.computedDOMStyles.borderWidth || sortableContainer.computedDOMStyles.borderTopWidth,
+      'margin': sortableContainer.computedDOMStyles.margin || `${sortableContainer.computedDOMStyles.marginTop} ${sortableContainer.computedDOMStyles.marginRight} ${sortableContainer.computedDOMStyles.marginBottom} ${sortableContainer.computedDOMStyles.marginLeft}`
     };
   }
 
