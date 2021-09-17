@@ -101,7 +101,7 @@ export default class SortableCardComponent extends Component {
   }
 
   _onMouseDown(ev) {
-    if(this.args.cardQuickActionClick(ev) && !this.args.isDisabled){
+    if(this.args.isCardQuickActionClick(ev) && !this.args.isDisabled){
       return;
     }
     if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled) {
