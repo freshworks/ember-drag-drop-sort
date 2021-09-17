@@ -101,9 +101,10 @@ export default class SortableCardComponent extends Component {
   }
 
   _onMouseDown(ev) {
-
-    let targetEleClasses = [...ev.target.classList];
-    if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled || targetEleClasses.some(r=> this.args.preventDragClasses?.includes(r))) {
+    if(this.args.cardQuickActionClick(ev) && !this.args.isDisabled){
+      return;
+    }
+    if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled) {
       this._preventDefaultBehavior(ev);
       return;
     }
@@ -113,6 +114,11 @@ export default class SortableCardComponent extends Component {
     // if (handle && !ev.target.closest(handle)) {
     //   return;
     // }
+
+    this._preventDefaultBehavior(ev);
+
+    DRAGACTIONS.forEach(event => window.addEventListener(event, this._dragEventsManager));
+    DROPACTIONS.forEach(event => window.addEventListener(event, this._detachDragEventManager));
 
     this._preventDefaultBehavior(ev);
 
