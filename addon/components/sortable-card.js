@@ -119,11 +119,6 @@ export default class SortableCardComponent extends Component {
 
     DRAGACTIONS.forEach(event => window.addEventListener(event, this._dragEventsManager));
     DROPACTIONS.forEach(event => window.addEventListener(event, this._detachDragEventManager));
-
-    this._preventDefaultBehavior(ev);
-
-    DRAGACTIONS.forEach(event => window.addEventListener(event, this._dragEventsManager));
-    DROPACTIONS.forEach(event => window.addEventListener(event, this._detachDragEventManager));
   }
 
   _dragEventsManager(ev) {
