@@ -101,7 +101,10 @@ export default class SortableCardComponent extends Component {
   }
 
   _onMouseDown(ev) {
-    if(this.args.isCardQuickActionClick(ev) && !this.args.isDisabled){
+    ev.preventDefault();
+    console.log('this.args.isCardQuickActionClick',this.args.isCardQuickActionClick)
+    if(typeof this.args.isCardQuickActionClick === 'function' && this.args.isCardQuickActionClick(ev) && !this.args.isDisabled){
+      this._preventDefaultBehavior(ev);
       return;
     }
     if (isEqual(ev.button, CONTEXTMENUKEYCODE) || this.args.isDisabled) {
@@ -271,6 +274,7 @@ export default class SortableCardComponent extends Component {
   }
 
   _onDragover(ev) {
+    ev.preventDefault(); // ✅ Required for drop to work
     if (get(this, 'sortManager.isDragging')) {
 
       set(this, 'sortManager.currentOverItem', this);
