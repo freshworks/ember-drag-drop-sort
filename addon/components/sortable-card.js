@@ -183,6 +183,8 @@ export default class SortableCardComponent extends Component {
   }
 
   _onDrag(ev) {
+    ev.preventDefault();
+    console.log('drag', ev);
     if (!this.sortableContainer?.cloneNode) {
       this._cloneDraggable();
 
@@ -254,6 +256,7 @@ export default class SortableCardComponent extends Component {
   }
 
   _onDrop() {
+    
     if (this.sortableContainer) {
       this.args.dragend ? this.args.dragend() : '';
 
@@ -274,6 +277,7 @@ export default class SortableCardComponent extends Component {
   }
 
   _onDragover(ev) {
+    console.log('dragover', ev);
     ev.preventDefault(); // ✅ Required for drop to work
     if (get(this, 'sortManager.isDragging')) {
 
